@@ -1,0 +1,235 @@
+<template>
+    <div class="homeScreen">
+        <!-- <div>
+            <p class="headerParent">Welcome Admin</p>
+        </div> -->
+        <p class="header">Booked Desks</p>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item padding="around-small"  size="9" small-device-size="12" large-device-size="9" style="padding-left:20px;">
+                <div style="display:flex;" class="slds-box slds-p-around_small slds-m-bottom_x-small">
+                    <div style="width:20%;" class="slds-list_horizontal">
+                        <span style="height:25px;width:25px;border:1px solid black;background-color:green;display: inline-block;border-radius: 50%;"></span>
+                        <span class="slds-p-left_x-small" style="font-size:16px;">Booked by You</span>
+                    </div>
+                    <div style="width:20%;" class="slds-list_horizontal">
+                        <span style="height:25px;width:25px;border:1px solid black;background-color:#FC6666;display: inline-block;border-radius: 50%;"></span>
+                        <span class="slds-p-left_x-small" style="font-size:16px;">Booked</span>
+                    </div>
+                    <div style="width:20%;"  class="slds-list_horizontal">
+                        <span style="height:25px;width:25px;border:1px solid black;background-color:#FFCD99;display: inline-block;border-radius: 50%;"></span>
+                        <span class="slds-p-left_x-small"  style="font-size:16px;">Pending</span>
+                    </div>
+                    <div style="width:20%;"  class="slds-list_horizontal">
+                        <span style="height:25px;width:25px;border:1px solid black;background-color:#ADFCAD;display: inline-block;border-radius: 50%;"></span>
+                        <span class="slds-p-left_x-small"  style="font-size:16px;">Selected</span>
+                    </div>
+                    <div style="width:20%;"  class="slds-list_horizontal">
+                        <span style="height:25px;width:25px;border:1px solid black;background-color:#DAD3C9;display: inline-block;border-radius: 50%;"></span>
+                        <span class="slds-p-left_x-small"  style="font-size:16px;">Available</span>
+                    </div>
+                </div>
+                <template if:true={isFloorView}>
+                    <c-deskbooktest  if:false={isSpinner} desk-data={deskData} floor-image={floorImage} onselectedids={selectedIdsHandler}
+                    book-count={bookCount} emp-role={empRole}></c-deskbooktest>
+                    <div if:true={isSpinner} class="">
+                        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+                    </div>
+                </template>
+                <template if:false={isFloorView}>
+                    <div style="height:500px;">
+                        <lightning-layout multiple-rows>
+                            <template if:true={deskData.length} for:each={deskData} for:item="obj">
+                                <lightning-layout-item class="" key={obj.seatNo} if:true={obj.isDeskBooked} size="12" 
+                                    large-device-size="4" >
+                                    <div class="tile">
+                                        <div style="display: flex;justify-content: center;align-items: center;width:15%;">
+
+                                            <lightning-layout multiple-rows >
+                                                    <lightning-layout-item size="12" large-device-size="12" >
+                                                        <div class="slds-avatar slds-avatar_circle slds-avatar_small">
+                                                            <lightning-icon icon-name='utility:success' alternative-text='success' variant='success' size='x-small' title='success'></lightning-icon>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                                    <lightning-layout-item size="12" large-device-size="12" style="justify-content: center;align-items: center;" >
+                                                        |
+                                                    </lightning-layout-item>
+                                                    <lightning-layout-item size="12" large-device-size="12" >
+                                                        <div class="slds-avatar slds-avatar_circle slds-avatar_small">
+                                                            <lightning-icon icon-name='utility:success' alternative-text='success' variant='success' size='x-small' title='success'></lightning-icon>
+                                                        </div>
+                                                    </lightning-layout-item>
+                                            </lightning-layout>
+                                                        
+                                            
+                                        </div>
+                                        <div style="padding-left:10px;width:75%;">
+                                            <div><b >{obj.employeeName}</b></div>
+                                            <div>Role : {obj.employeeRole}</div>
+                                            <div>Workspace: {obj.seatNo}  ({obj.workSpaceType})
+                                                
+                                            </div>
+                                            <div>Timings:  <lightning-formatted-time value={obj.startTime} ></lightning-formatted-time> to <lightning-formatted-time value={obj.endTime}></lightning-formatted-time></div>
+                                        </div>
+                                        <div style="width:10%;">
+                                            <lightning-icon if:true={obj.isDelete}  class="deleteIcon" icon-name='utility:close' alternative-text='close' size='x-small' title='close'></lightning-icon>
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+                            </template>
+                        </lightning-layout>
+                    </div>
+                    <div if:true={showPagination} class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 ">
+                        <div class="slds-grid slds-grid_align-spread slds-p-top_medium slds-p-bottom_medium slds-align_absolute-center">
+                            <div class="slds-col ">
+                                <button class="slds-button slds-button_icon button " title="Search">
+                                    <lightning-icon icon-name="utility:chevronleft"
+                                        alternative-text="loading icon" size="x-small"
+                                        class="button carousel-button slds-align_absolute-center slds-p-around_x-small">
+                                    </lightning-icon>
+                                </button>&nbsp;&nbsp;
+                                <button class="slds-button slds-button_icon button " title="Search">
+                                    <a class="previous slds-align_absolute-center  buttonatag" onclick={previousHandler}>1</a>
+                                </button>&nbsp;
+                                <button class="slds-button slds-button_icon button " title="Search">
+                                    <a class="previous slds-align_absolute-center  buttonatag" onclick={previousHandler}>2</a>
+                                </button>&nbsp;
+                                <button class="slds-button slds-button_icon button " title="Search">
+                                    <a class="previous slds-align_absolute-center  buttonatag" onclick={previousHandler}>3</a>
+                                </button>&nbsp;&nbsp;
+                                <button class="slds-button slds-button_icon button " title="Search"  onclick={nextHandler}>
+                                    <lightning-icon icon-name="utility:chevronright"
+                                        alternative-text="loading icon" size="x-small"
+                                        class="rotate button carousel-button slds-align_absolute-center slds-p-around_x-small">
+                                    </lightning-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </template>
+            </lightning-layout-item>
+            <lightning-layout-item class="slds-p-around_x-small" size="3" small-device-size="12" large-device-size="3">
+                <lightning-combobox name="buildingName" label="Building" value={buildingName} placeholder="Select Building"
+                    options={buildingOptions} onchange={inputsHandler} ></lightning-combobox>
+
+                <lightning-combobox name="floorNumber" label="Floor" value={floorNumber} placeholder="Select Floor"
+                    options={floorOptions} onchange={inputsHandler}></lightning-combobox>
+                
+                <lightning-combobox name="workspaceType" label="Workspace Type" value={workspaceType} placeholder="Select Workspace Type"
+                    options={workspaceOptions} onchange={inputsHandler}></lightning-combobox>
+
+                <lightning-input label="Booked for Date" name="BookedforDate" value={bookedForDate} type="date"
+                    onchange={inputsHandler}></lightning-input>
+                <lightning-input label="Workspace No" name="workspaceNo" value={workspaceNo} type="text"
+                    onchange={inputsHandler}></lightning-input>
+                <lightning-input type="toggle" label="Floor View" name="input1" onchange={toggleViewHandler} 
+                checked={isFloorView} message-toggle-active="" message-toggle-inactive="" class="slds-p-top_xx-small"></lightning-input>
+                <div class="slds-p-top_small">
+                    <lightning-button label="Book Seats" variant="brand" onclick={bookSeatsHandler}></lightning-button>
+                </div>
+                
+                <lightning-layout multiple-rows  class="slds-p-top_small">
+                    <lightning-layout-item size="12" class="slds-p-top_x-small">
+                        <!-- <p class="header slds-p-around_small">Employees</p> -->
+                        <lightning-layout multiple-rows >
+                            <template if:true={deskData.length} for:each={deskData} for:item="obj">
+                                <lightning-layout-item class="" key={obj.seatNo} if:true={obj.isDeskBooked} size="12" 
+                                    large-device-size="12" >
+                                    <div class="tile">
+                                        <div style="display: flex;justify-content: center;align-items: center;width:15%;">
+                                            <span class="slds-avatar slds-avatar_circle slds-avatar_medium">
+                                                <lightning-icon  class="my-icon" icon-name='utility:user' alternative-text='user' size='xx-small' title='user'></lightning-icon>
+                                            </span>
+                                        </div>
+                                        <div style="padding-left:10px;width:75%;">
+                                            <div><b >{obj.employeeName}</b></div>
+                                            <div>Role : {obj.employeeRole}</div>
+                                            <div>Workspace: {obj.seatNo} ({obj.workSpaceType})</div>
+                                            <div>Timings:  <lightning-formatted-time value={obj.startTime} ></lightning-formatted-time> to <lightning-formatted-time value={obj.endTime}></lightning-formatted-time></div>
+                                        </div>
+                                        <div style="width:10%;">
+                                            <lightning-icon if:true={obj.isDelete} class="deleteIcon" icon-name='utility:close' alternative-text='close' size='x-small' title='close' 
+                                            onclick={deleteWorkSpaceAction} data-id={obj.bookingRecId}></lightning-icon>
+                                        </div>
+                                    </div>
+                                </lightning-layout-item>
+                            </template>
+                        </lightning-layout>
+                        <div if:true={showPagination} class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 ">
+                            <div class="slds-grid slds-grid_align-spread slds-p-top_medium slds-p-bottom_medium slds-align_absolute-center">
+                                <div class="slds-col ">
+                                    <button class="slds-button slds-button_icon button " title="Search">
+                                        <lightning-icon icon-name="utility:chevronleft"
+                                            alternative-text="loading icon" size="x-small"
+                                            class="button carousel-button slds-align_absolute-center slds-p-around_x-small">
+                                        </lightning-icon>
+                                    </button>&nbsp;&nbsp;
+                                    <button class="slds-button slds-button_icon button " title="Search">
+                                        <a class="previous slds-align_absolute-center  buttonatag" onclick={previousHandler}>1</a>
+                                    </button>&nbsp;
+                                    <button class="slds-button slds-button_icon button " title="Search">
+                                        <a class="previous slds-align_absolute-center  buttonatag" onclick={previousHandler}>2</a>
+                                    </button>&nbsp;
+                                    <button class="slds-button slds-button_icon button " title="Search">
+                                        <a class="previous slds-align_absolute-center  buttonatag" onclick={previousHandler}>3</a>
+                                    </button>&nbsp;&nbsp;
+                                    <button class="slds-button slds-button_icon button " title="Search"  onclick={nextHandler}>
+                                        <lightning-icon icon-name="utility:chevronright"
+                                            alternative-text="loading icon" size="x-small"
+                                            class="rotate button carousel-button slds-align_absolute-center slds-p-around_x-small">
+                                        </lightning-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+        </lightning-layout>
+        <!-- <div class="card">
+            <p>A glass-like card to demonstrate the <strong>Glassmorphism UI design</strong> trend.</p>
+            <p class="card-footer">Created by Rahul C.</p>
+        </div> -->
+    </div>
+
+    <template if:true={showModal}>
+        <c-reusable-modal header="Book Desks" modal-id="1">
+            <div>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item class="slds-p-around_xx-small" size="12" large-device-size="6">
+                        <lightning-input type="time" name="startTime" label="Start Time" value={startTime}
+                        min="10:30:00.000Z" max="22:00:00.000Z" onchange={timeHandler}></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-p-around_xx-small" size="12" large-device-size="6">
+                        <lightning-input type="time" name="endTime" label="End Time" value={endTime}
+                        min="10:30:00.000Z" max="22:00:00.000Z"  onchange={timeHandler}></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-p-around_xx-small" size="12" large-device-size="6">
+                        <lightning-combobox name="buildingName" label="Building" value={buildingName} placeholder="Select Building"
+                        options={buildingOptions} onchange={inputsHandler} disabled></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-p-around_xx-small" size="12" large-device-size="6">
+                        <lightning-combobox name="floorNumber" label="Floor" value={floorNumber} placeholder="Select Floor"
+                        options={floorOptions} onchange={inputsHandler} disabled></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-p-around_xx-small" size="12" large-device-size="6">
+                        <lightning-combobox name="workspaceType" label="Workspace Type" value={workspaceType}
+                        placeholder="Select Workspace Type" options={workspaceOptions} onchange={inputsHandler} disabled></lightning-combobox>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-p-around_xx-small" size="12" large-device-size="6">
+                        <lightning-input label="Booked for Date" name="BookedforDate" value={bookedForDate} type="date"
+                        onchange={inputsHandler} disabled></lightning-input>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-p-around_xx-small" size="12" large-device-size="6">
+                        <lightning-input label="Workspace No" name="workspaceNo" value={workspaceNo} type="text"
+                        onchange={inputsHandler} disabled></lightning-input>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+            <div slot="footer">
+                <lightning-button label="Close" variant="neutral" onclick={closeHandler}></lightning-button>&nbsp;
+                <lightning-button label="Save" variant="brand" onclick={saveHandler}></lightning-button>
+            </div>
+        </c-reusable-modal>
+    </template>
+</template>

@@ -1,0 +1,152 @@
+<template>
+
+   
+    <div style="padding:0px;">
+        <img src="https://cdn4.vectorstock.com/i/1000x1000/72/43/modern-open-space-office-plan-flat-vector-27827243.jpg" style="width:1000px;height:1080px;left:0px;top:0px;" />
+        <template for:each={data} for:item="item" index="index">
+            <div key={item.seatNo}>
+                <div style={item.style} onclick={callme} class="pos1">
+                    <div
+                        style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight:bold;font-size:20px;color:red;">
+                        {item.seatNo}
+                    </div>
+                </div>
+            </div>
+        </template>
+        <!-- <div style="left:205px;top:230px;border:2px solid black;width:50px;height:50px;"
+            onclick={callme} class="pos1">
+            <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight:bold;font-size:20px;color:red;">
+            D1
+            </div>
+        </div>
+        <div style="position:absolute;left:367px;top:230px;border:2px solid black;width:50px;height:50px;cursor:pointer;transform: translate(-50%, -50%);color:red;"
+            onclick={callme} class="pos1">
+            <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight:bold;font-size:20px;color:red;">
+            D2
+            </div>
+        </div>
+        <div style="position:absolute;left:205px;top:355px;border:2px solid black;width:50px;height:50px;cursor:pointer;transform: translate(-50%, -50%);color:red;"
+            onclick={callme} class="pos1">
+            <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight:bold;font-size:20px;color:red;">
+            D3
+            </div>
+        </div>
+        <div style="position:absolute;left:367px;top:355px;border:2px solid black;width:50px;height:50px;cursor:pointer;transform: translate(-50%, -50%);color:red;"
+            onclick={callme} class="pos1">
+            <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight:bold;font-size:20px;color:red;">
+            D4
+            </div>
+        </div>
+        <div style="position:absolute;left:209px;top:593px;border:2px solid black;width:100px;height:100px;cursor:pointer;transform: translate(-50%, -50%);color:red;border-radius: 50%;"
+            onclick={callme} class="pos1">
+            <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight:bold;font-size:20px;color:red;">
+            M1
+            </div>
+        </div> -->
+    </div>
+
+    <!-- <div class="slds-box slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none">
+        <lightning-layout multiple-rows>
+            <lightning-layout-item padding="" style="position: relative;text-align: center;color: black;">
+                <img src="https://cdn4.vectorstock.com/i/1000x1000/92/28/chair-and-desk-top-view-vector-30129228.jpg"
+                    style="height:100px;border:5px solid green;" />
+                <div
+                    style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight:bold;font-size:20px;color:red;">
+                    D1</div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="" style="position: relative;text-align: center;color: black;">
+                <img src="https://cdn4.vectorstock.com/i/1000x1000/92/28/chair-and-desk-top-view-vector-30129228.jpg"
+                    style="height:100px;border:5px solid red;" />
+                <div
+                    style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight:bold;font-size:20px;color:red;">
+                    D2</div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="" style="position: relative;text-align: center;color: black;">
+                <img src="https://cdn4.vectorstock.com/i/1000x1000/92/28/chair-and-desk-top-view-vector-30129228.jpg"
+                    style="height:100px;border:5px solid orange;" />
+                <div
+                    style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight:bold;font-size:20px;color:red;">
+                    D3</div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="" style="position: relative;text-align: center;color: black;">
+                <img src="https://cdn4.vectorstock.com/i/1000x1000/92/28/chair-and-desk-top-view-vector-30129228.jpg"
+                    style="height:100px;border:5px solid grey;" />
+                <div
+                    style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight:bold;font-size:20px;color:red;">
+                    D4</div>
+            </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item padding="" style="position: relative;text-align: center;color: black;">
+                <img src="https://i.pinimg.com/originals/d4/78/f3/d478f3d62a3d2123bbd0d5a6b8cc1dc3.jpg"
+                    style="height:237px;border:5px solid green;color:red;filter: opacity(0.5) drop-shadow(0 0 brown);" />
+                <div
+                    style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight:bold;font-size:20px;color:red;">
+                    M1</div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>  -->
+
+
+     <!-- <img src="https://cdn4.vectorstock.com/i/1000x1000/72/43/modern-open-space-office-plan-flat-vector-27827243.jpg" 
+        alt="Workplace" usemap="#workmap" width="800" height="532" style="position: relative;">
+
+        <map name="workmap">
+        <area shape="rect" coords="34,44,270,350" alt="Computer" href="computer.htm"  class="computer"
+        >
+        <area shape="rect" coords="290,172,333,250" alt="Phone" href="phone.htm"   class="computer"
+        >
+        <area shape="circle" coords="337,300,44" alt="Cup of coffee" href="coffee.htm"   class="computer"
+        >
+        </map> -->
+
+
+
+
+    <!-- <div style="padding:0px;">
+    <div class="room-container">
+        <img src="https://cdn4.vectorstock.com/i/1000x1000/72/43/modern-open-space-office-plan-flat-vector-27827243.jpg" alt="">
+          
+        <div onclick={callme} class="chair">
+            <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight:bold;font-size:20px;color:red;">
+            D4
+            </div>
+        </div>
+
+        <div onclick={callme} class="chair1">
+            <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight:bold;font-size:20px;color:red;">
+            D4
+            </div>
+        </div>
+    </div>
+</div>  -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="generator" content="Aspose.Words for .NET 23.12.0" />
+    <title></title>
+    <style type="text/css">
+        body {
+            font-family: 'Times New Roman';
+            font-size: 12pt
+        }
+
+        p {
+            margin: 0pt
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p style="text-align:justify"><img src="images/Aspose.Words.01ef9d47-bb37-47db-bd6d-4629701a24a8.001.jpeg"
+                width="816" height="1056" alt=""
+                style="-aw-left-pos:0pt; -aw-rel-hpos:column; -aw-rel-vpos:paragraph; -aw-top-pos:0pt; -aw-wrap-type:inline" />
+        </p>
+    </div>
+</body>
+
+</html>
+</template>

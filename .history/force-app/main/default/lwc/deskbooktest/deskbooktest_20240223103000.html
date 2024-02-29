@@ -1,0 +1,17 @@
+<template>
+
+    <div style="padding:0px;border-radius:15px;" class="shadowFrame">
+        <img src={floorImage} style="width:100%;height:1080px;left:0px;top:0px;border-radius:10px;"/>
+        <!-- width:1000px; -->
+        <template for:each={deskData} for:item="item" for:index="index">
+            <div key={item.seatNo}>
+                <div data-disable={item.disableDesk} style={item.style} onclick={selectSeatHandler} data-spaceid={item.workspaceId} data-booked={item.isDeskBooked} class="pos1 seat" data-index={index} data-name={item.seatNo} data-selected={item.selected}>
+                    <div
+                        style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-weight:bold;font-size:20px;color:red;">
+                        {item.seatNo}
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

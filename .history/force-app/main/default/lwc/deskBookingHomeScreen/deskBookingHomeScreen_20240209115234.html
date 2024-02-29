@@ -1,0 +1,27 @@
+<template>
+    <div class="homeScreen">
+        <div>
+            <p class="headerParent">Welcome Admin</p>
+        </div>
+        <p class="header">Booked Desks</p>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item padding="around-small" size="9">
+                <div class="custom-box slds-box slds-p-around_medium slds-text-align_center">1</div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="3">
+                <div class="custom-box slds-box slds-p-around_medium slds-text-align_center">1</div>
+            </lightning-layout-item>
+        </lightning-layout>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size_3-of-4">
+                <c-deskbooktest></c-deskbooktest>
+            </div>
+            <div class="slds-col slds-size_1-of-4 slds-var-p-around_medium">
+                <lightning-input label="Booked for Date" name="BookedforDate" value={bookedForDate} 
+                type="date" onchange={inputsHandler}></lightning-input>
+                <lightning-input label="Workspace No" name="workspaceNo" value={workspaceNo} 
+                type="text" onchange={inputsHandler}></lightning-input>
+            </div>
+        </div>
+    </div>
+</template>

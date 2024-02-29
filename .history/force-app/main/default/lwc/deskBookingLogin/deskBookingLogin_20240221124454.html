@@ -1,0 +1,116 @@
+<template>
+    <template if:true={loginPage}>
+        <div class="slds-grid no-gutters">
+            <div class="slds-col slds-size_1-of-2">
+                <div class="leftside">
+                    <!-- <div class="login-container">       
+            <img src={workspaceImage} alt="co-working image" class="background-image"/>
+            
+                <div class="textoverlay">
+                    Desk Booking <br/>
+                </div>
+
+                <div class="textFront">
+                     Book your workspace with few simple steps
+                </div>
+                </div> -->
+
+                <!-- Carousel code -->
+
+
+                <!-- <div class="container">
+                    <div class="carousel">
+                      <div class="carousel__face"><span>This is something</span></div>
+                      <div class="carousel__face"><span>Very special</span></div>
+                      <div class="carousel__face"><span>Special is the key</span></div>
+                      <div class="carousel__face"><span>For you</span></div>
+                      <div class="carousel__face"><span>Just give it</span></div>
+                      <div class="carousel__face"><span>A try</span></div>
+                      <div class="carousel__face"><span>And see</span></div>
+                      <div class="carousel__face"><span>How IT Works</span></div>
+                      <div class="carousel__face"><span>Woow</span></div>
+                    </div>
+                  </div> -->
+
+                  <lightning-carousel>
+                    <template if:true={backgroundImagesList}>
+                      <template for:each={backgroundImagesList} for:item="images">
+                      <lightning-carousel-image 
+                      key={images.id}
+                      src={images.src}
+                      header={images.header}
+                     >                       
+                      </lightning-carousel-image>
+                    </template>
+                    </template>
+                  </lightning-carousel>
+
+            </div>
+            
+    
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <div class="rightside">
+                <div class="slds-p-top_large"></div>
+                <div class="slds-box slds-m-around_medium">
+                <div class="slds-align_absolute-center login"> LOGIN PAGE </div>
+                <div class="slds-p-top_xx-large"></div>
+                <!-- <lightning-layout>
+                <lightning-layout-item class="slds-p-top_xx-large" size="12" large-device-size="12" small-device-size="3">
+                    <label class="slds-p-left_medium slds-p-top_xx-large empId">Employee ID</label>
+                    <lightning-input type="text" class="slds-p-left_medium slds-p-right_medium" label="Enter Employee ID" placeholder="Enter Employee ID" variant="label-hidden" > </lightning-input>
+
+                </lightning-layout-item>
+            </lightning-layout>
+            <div class="slds-p-top_large"></div> 
+
+            <lightning-layout>
+                
+                <lightning-layout-item  size="12" large-device-size="12" small-device-size="3">
+                    <label class="slds-p-left_medium pwd">Password</label>
+                    <lightning-input type="password" class="slds-p-left_medium slds-p-right_medium" label="Enter Password" placeholder="Enter Password" variant="label-hidden" > </lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <lightning-layout-item  size="12" large-device-size="12" small-device-size="3">
+                
+                    <lightning-button variant="brand" class="slds-align_absolute-center slds-p-top_large" label="LOGIN"></lightning-button>
+                </lightning-layout-item> -->
+
+                <!-- Input new design -->
+
+                <div class="page">
+                    <div class="field field_v1">
+                      <label for="emp-id" class="ha-screen-reader">Employee ID</label>
+                      <input type="text" id="emp-id" class="field__input" placeholder="Enter Employee ID" onchange={handleEmpIdChange}>
+                      <span class="field__label-wrap" aria-hidden="true">
+                        <span class="field__label">Employee ID</span>
+                      </span>
+                    </div>
+                    <div class="field field_v2">
+                      <label for="password" class="ha-screen-reader">Password</label>
+                      <input type="password" id="password"  class="field__input" placeholder="Enter Password"  onchange={handlePwdChange}>
+                      <span class="field__label-wrap" aria-hidden="true">
+                        <span class="field__label">Password</span>
+                      </span>
+                    </div>    
+                   
+                  </div>
+
+                  <!-- button -->
+                  <lightning-layout-item  size="12" large-device-size="12" small-device-size="3">
+                
+                    <lightning-button variant="brand" class="slds-align_absolute-center slds-p-top_large buttonCss" label="LOGIN" onclick={handleSubmit}></lightning-button>
+                </lightning-layout-item>
+            
+            </div>
+            </div>
+                </div>
+            </div>
+        
+</template>
+
+<template if:true={homeScreen}>
+  <c-desk-booking-home-page emp-id={empIdResult}></c-desk-booking-home-page>
+</template>
+</template>

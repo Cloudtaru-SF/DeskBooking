@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>WorkspaceBooking__c</members>
+        <members>Workspace_Info__c</members>
+        <members>WorkSpace__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Contact.EmployeeRole__c</members>
+        <members>Contact.Password__c</members>
+        <members>Contact.ProjectManager__c</members>
+        <members>Contact.ReportingManager__c</members>
+        <members>Contact.DateofJoining__c</members>
+        <members>Contact.EmployeeNumber__c</members>
+        <members>WorkspaceBooking__c.BookingStatus__c</members>
+        <members>WorkspaceBooking__c.BookedforDate__c</members>
+        <members>WorkspaceBooking__c.Employee__c</members>
+        <members>WorkspaceBooking__c.WorkspaceNo__c</members>
+        <members>WorkspaceBooking__c.WorkspaceType__c</members>
+        <members>WorkspaceBooking__c.StartTime__c</members>
+        <members>WorkspaceBooking__c.WorkspaceInfo__c</members>
+        <members>WorkspaceBooking__c.EmployeeName__c</members>
+        <members>WorkspaceBooking__c.EndTime__c</members>
+        <members>Workspace_Info__c.WorkspaceAvailability__c</members>
+        <members>Workspace_Info__c.YCoordinate__c</members>
+        <members>Workspace_Info__c.XCoordinate__c</members>
+        <members>Workspace_Info__c.Workspace_No__c</members>
+        <members>Workspace_Info__c.WorkspaceType__c</members>
+        <members>Workspace_Info__c.WorkSpace__c</members>
+        <members>Workspace_Info__c.Height__c</members>
+        <members>Workspace_Info__c.Width__c</members>
+        <members>Workspace_Info__c.Shape__c</members>
+        <members>WorkSpace__c.Floor__c</members>
+        <members>WorkSpace__c.Building__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>WorkspaceBooking__c-Workspace Booking Layout</members>
+        <members>Workspace_Info__c-Workspace Info Layout</members>
+        <members>WorkSpace__c-WorkSpace Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>DeskBookingLoginController</members>
+        <members>SeatBookingHelper</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>deskBookChild</members>
+        <members>deskBookingHomeScreen</members>
+        <members>deskBookingLogin</members>
+        <members>reusableModal</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>CoworkingImage</members>
+        <members>CoworkingImage2</members>
+        <members>CoworkingImage3</members>
+        <members>CoworkingImage4</members>
+        <members>DeskBooking</members>
+        <members>Homeicon</members>
+        <members>ProfilePictureIcon</members>
+        <name>StaticResource</name>
+    </types>
+    <version>58.0</version>
+</Package>

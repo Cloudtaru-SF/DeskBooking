@@ -1,0 +1,20 @@
+.pos1:hover {
+    background-color: #ffffff;
+    opacity: .4;
+}
+.pos2:hover {
+    background-color: #ffffff;
+    opacity: .4;
+}
+
+
+.room-container {
+    position: relative;
+}
+  
+.chair {
+    position: absolute;
+    
+    top: 400px;
+    left: 400px;
+}

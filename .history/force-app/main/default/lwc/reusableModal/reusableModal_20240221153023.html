@@ -1,0 +1,53 @@
+<template>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+            class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"  onclick={closeHandler}>
+                    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Cancel and close</span>
+                </button>
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Modal header</h1>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning-layout multiple-rows>
+                        <lightning-layout-item class="slds-p-around_xx-small" size="12" large-device-size="6">
+                            <lightning-input type="time" name="startTime" label="Start Time" value={startTime}
+                            min="10:30:00.000Z" max="22:00:00.000Z" onchange={timeHandler}></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item class="slds-p-around_xx-small" size="12" large-device-size="6">
+                            <lightning-input type="time" name="endTime" label="End Time" value={endTime}
+                            min="10:30:00.000Z" max="22:00:00.000Z"  onchange={timeHandler}></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item class="slds-p-around_xx-small" size="12" large-device-size="6">
+                            <lightning-combobox name="buildingName" label="Building" value={buildingName} placeholder="Select Building"
+                            options={buildingOptions} onchange={inputsHandler} disabled></lightning-combobox>
+                        </lightning-layout-item>
+                        <lightning-layout-item class="slds-p-around_xx-small" size="12" large-device-size="6">
+                            <lightning-combobox name="floorNumber" label="Floor" value={floorNumber} placeholder="Select Floor"
+                            options={floorOptions} onchange={inputsHandler} disabled></lightning-combobox>
+                        </lightning-layout-item>
+                        <lightning-layout-item class="slds-p-around_xx-small" size="12" large-device-size="6">
+                            <lightning-combobox name="workspaceType" label="Workspace Type" value={workspaceType}
+                            placeholder="Select Workspace Type" options={workspaceOptions} onchange={inputsHandler} disabled></lightning-combobox>
+                        </lightning-layout-item>
+                        <lightning-layout-item class="slds-p-around_xx-small" size="12" large-device-size="6">
+                            <lightning-input label="Booked for Date" name="BookedforDate" value={bookedForDate} type="date"
+                            onchange={inputsHandler} disabled></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item class="slds-p-around_xx-small" size="12" large-device-size="6">
+                            <lightning-input label="Workspace No" name="workspaceNo" value={workspaceNo} type="text"
+                            onchange={inputsHandler} disabled></lightning-input>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </div>
+                <div class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={closeHandler}>Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={saveHandler}>Save</button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</template>

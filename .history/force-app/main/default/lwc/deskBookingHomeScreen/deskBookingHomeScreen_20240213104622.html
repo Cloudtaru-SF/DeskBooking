@@ -1,0 +1,30 @@
+<template>
+    <div class="homeScreen">
+        <div>
+            <p class="headerParent">Welcome Admin</p>
+        </div>
+        <p class="header">Booked Desks</p>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item padding="around-small" size="9" small-device-size="12" large-device-size="9">
+                    <c-deskbooktest if:true={deskData.length} desk-data={deskData}></c-deskbooktest>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="3" small-device-size="12" large-device-size="3">
+                    <lightning-input label="Booked for Date" name="BookedforDate" value={bookedForDate} 
+                    type="date" onchange={inputsHandler}></lightning-input>
+                    <lightning-input label="Workspace No" name="workspaceNo" value={workspaceNo} 
+                    type="text" onchange={inputsHandler}></lightning-input>
+                   
+                    <lightning-layout multiple-rows>
+                        <lightning-layout-item size="9">
+                            
+                        </lightning-layout-item>
+                    </lightning-layout>
+
+            </lightning-layout-item>
+        </lightning-layout>
+        <!-- <div class="card">
+            <p>A glass-like card to demonstrate the <strong>Glassmorphism UI design</strong> trend.</p>
+            <p class="card-footer">Created by Rahul C.</p>
+        </div> -->
+    </div>
+</template>

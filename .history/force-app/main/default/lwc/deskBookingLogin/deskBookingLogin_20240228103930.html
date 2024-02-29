@@ -1,0 +1,52 @@
+<template>
+  <template if:true={loginPage}>
+    <div class="slds-grid no-gutters">
+      <div class="slds-col slds-size_1-of-2">
+        <div class="leftside">
+          <lightning-carousel>
+            <template if:true={backgroundImagesList}>
+              <template for:each={backgroundImagesList} for:item="images">
+                <lightning-carousel-image key={images.id} src={images.src} header={images.header}>
+                </lightning-carousel-image>
+              </template>
+            </template>
+          </lightning-carousel>
+        </div>
+      </div>
+      <div class="slds-col slds-size_1-of-2">
+        <div class="rightside">
+          <div class="slds-p-top_large"></div>
+          <div class="slds-box slds-m-around_medium">
+            <div class="slds-align_absolute-center login"> LOGIN PAGE </div>
+            <div class="slds-p-top_xx-large"></div>
+            <div class="page">
+              <div class="field field_v1">
+                <label for="emp-id" class="ha-screen-reader">Employee ID</label>
+                <input type="text" id="emp-id" class="field__input" placeholder="Enter Employee ID"
+                  onchange={handleEmpIdChange}>
+                <span class="field__label-wrap" aria-hidden="true">
+                  <span class="field__label">Employee ID</span>
+                </span>
+              </div>
+              <div class="field field_v2">
+                <label for="password" class="ha-screen-reader">Password</label>
+                <input type="password" id="password" class="field__input" placeholder="Enter Password"
+                  onchange={handlePwdChange}>
+                <span class="field__label-wrap" aria-hidden="true">
+                  <span class="field__label">Password</span>
+                </span>
+              </div>
+            </div>
+            <lightning-layout-item size="12" large-device-size="12" small-device-size="3">
+              <lightning-button variant="brand" class="slds-align_absolute-center slds-p-top_large buttonCss"
+                label="LOGIN" onclick={handleSubmit}></lightning-button>
+            </lightning-layout-item>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template if:true={homeScreen}>
+    <c-desk-booking-home-screen emp-id={empResult.Id} onlogout={}></c-desk-booking-home-screen>
+  </template>
+</template>

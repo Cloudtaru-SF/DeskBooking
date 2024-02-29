@@ -1,0 +1,18 @@
+.homeScreen{
+    background-color: #E9D395;
+    border-radius: 10px;
+}
+.header{
+    font-weight: 900;
+    font-size: 25px;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: black;
+}
+.headerParent{
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+    background-color: #E3E3E3;
+}

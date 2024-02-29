@@ -1,0 +1,54 @@
+.pos1:hover {
+    background-color: #ffffff;
+    opacity: .3;
+}
+.pos1{
+    position:absolute;
+    cursor:pointer;
+    transform: translate(-50%, -50%);
+}
+.pos2:hover {
+    background-color: #ffffff;
+    opacity: .4;
+}
+
+.computer{
+    position: absolute;
+    border:2px solid black;
+    width:50px;
+    height:50px;
+    cursor:pointer;
+    transform: translate(-50%, -50%);color:red;
+}
+
+.room-container {
+    position: relative;
+}
+  
+.chair {
+    position: absolute;
+    top: 160px;
+    left: 205px;
+    border:2px solid black;
+    width:50px;
+    height:50px;
+    cursor:pointer;
+    transform: translate(-50%, -50%);color:red;
+}
+
+.chair1 {
+    position: absolute;
+    top: 160px;
+    left: 340px;
+    border:2px solid black;
+    width:50px;
+    height:50px;
+    cursor:pointer;
+    transform: translate(-50%, -50%);color:red;
+}
+.shadowFrame{
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+.imageCss{
+    border-radius: 15px;
+}
